@@ -19,8 +19,8 @@ namespace Proj
         }
         Random rnd = new Random();
 
-        public int y = -1;
-        public int x = 0;
+        public int ySpeed = -1;
+        public int xSpeed = 0;
         public int W = 0;
         public int L = 0;
         public Boolean start;
@@ -30,8 +30,8 @@ namespace Proj
         void win()
         {
             start = false;
-            x = 0;
-            y = 0;
+            xSpeed = 0;
+            ySpeed = 0;
             W++;
             side = 1;
             ball.Location = new Point(Form1.ActiveForm.Width / 2 - 10, 140);
@@ -41,8 +41,8 @@ namespace Proj
         void lose()
         {
             start = false;
-            x = 0;
-            y = 0;
+            xSpeed = 0;
+            ySpeed = 0;
             L++;
             side = -1;
             ball.Location = new Point(Form1.ActiveForm.Width / 2 - 10, 300);
@@ -91,8 +91,8 @@ namespace Proj
         {
             if (ball.Bounds.IntersectsWith(body.Bounds))
             {
-                y = 1;
-                x = -2 * (ball.Location.X - body.Location.X - 100);
+                ySpeed = 1;
+                xSpeed = -2 * (ball.Location.X - body.Location.X - 100);
                 if (timer1.Interval > 20 && ready)
                 {
                     timer1.Interval--;
@@ -101,24 +101,24 @@ namespace Proj
             }
             if (ball.Bounds.IntersectsWith(opponent.Bounds))
             {
-                y = -1;
-                x = -2 * (ball.Location.X - opponent.Location.X - 100);
+                ySpeed = -1;
+                xSpeed = -2 * (ball.Location.X - opponent.Location.X - 100);
             }
             if (ball.Location.X <= 0)
             {
-                x = -Math.Abs(x);
+                xSpeed = -Math.Abs(xSpeed);
             }
             if (ball.Location.X + 45 >= Form1.ActiveForm.Size.Width)
             {
-                x = Math.Abs(x);
+                xSpeed = Math.Abs(xSpeed);
             }
 
         }
         void ballMove()
         {
             turn();
-            ball.Top -= y * 10;
-            ball.Left -= x / 20;
+            ball.Top -= ySpeed * 10;
+            ball.Left -= xSpeed / 20;
         }
 
         void Form1_KeyDown(object sender, KeyEventArgs e)
@@ -134,7 +134,7 @@ namespace Proj
             if (start == false && (e.KeyCode == Keys.Left || e.KeyCode == Keys.Right))
             {
                 start = true;
-                y = side;
+                ySpeed = side;
             }
         }
         private void ball_Click(object sender, EventArgs e)
