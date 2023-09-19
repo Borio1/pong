@@ -23,7 +23,8 @@ namespace Proj
         public int x = 0;
         public int W = 0;
         public int L = 0;
-        Boolean start;
+        public Boolean start;
+        public Boolean ready;
         public int side = -1;
 
         void win()
@@ -35,6 +36,7 @@ namespace Proj
             side = 1;
             ball.Location = new Point(Form1.ActiveForm.Width / 2 - 10, 140);
             opponent.Location = new Point(Form1.ActiveForm.Width/2-100, 41);
+            body.Location = new Point(Form1.ActiveForm.Width / 2 - 100, 399);
         }
         void lose()
         {
@@ -45,23 +47,27 @@ namespace Proj
             side = -1;
             ball.Location = new Point(Form1.ActiveForm.Width / 2 - 10, 300);
             opponent.Location = new Point(Form1.ActiveForm.Width / 2 - 100, 41);
+            body.Location = new Point(Form1.ActiveForm.Width / 2 - 100, 399);
         }
         void opponentMove()
         {
             if (opponent.Location.X + 100 + rnd.Next(60) < ball.Location.X)
             {
-                opponent.Left += 15;
+                opponent.Left += 7;
             }
             if (opponent.Location.X + 100 + rnd.Next(60) > ball.Location.X && opponent.Location.X > 0)
             {
-                opponent.Left -= 15;
+                opponent.Left -= 7;
             }
         }
         private void pictureBox1_Click(object sender, EventArgs e)
         {
 
         }
-
+        private void timer2_Tick(object sender, EventArgs e)
+        {
+            ready = true;
+        }
         private void timer1_Tick(object sender, EventArgs e)
         {
             score.Text = "Score: " + W + "/" + L;
@@ -87,6 +93,11 @@ namespace Proj
             {
                 y = 1;
                 x = -2 * (ball.Location.X - body.Location.X - 100);
+                if (timer1.Interval > 20 && ready)
+                {
+                    timer1.Interval--;
+                    ready = false;
+                }
             }
             if (ball.Bounds.IntersectsWith(opponent.Bounds))
             {
@@ -106,8 +117,8 @@ namespace Proj
         void ballMove()
         {
             turn();
-            ball.Top -= y * 20;
-            ball.Left -= x / 10;
+            ball.Top -= y * 10;
+            ball.Left -= x / 20;
         }
 
         void Form1_KeyDown(object sender, KeyEventArgs e)
@@ -120,7 +131,7 @@ namespace Proj
             {
                 body.Left += 20;
             }
-            if (e.KeyCode == Keys.Space)
+            if (start == false && (e.KeyCode == Keys.Left || e.KeyCode == Keys.Right))
             {
                 start = true;
                 y = side;
