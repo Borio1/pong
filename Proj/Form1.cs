@@ -4,6 +4,7 @@ using System.ComponentModel;
 using System.Data;
 using System.Drawing;
 using System.Linq;
+using System.Reflection.Emit;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -28,6 +29,7 @@ namespace Proj
         public int side = -1;
         public double speed = 1;
         public int gameActive = 0;
+        public int size = 0;
 
         void win()
         {
@@ -36,9 +38,10 @@ namespace Proj
             ySpeed = 0;
             W++;
             side = 1;
+            timer1.Interval = 40;
             ball.Location = new Point(Form1.ActiveForm.Width / 2 - 10, 140);
             opponent.Location = new Point(Form1.ActiveForm.Width/2-100, 41);
-            body.Location = new Point(Form1.ActiveForm.Width / 2 - 100, 399);
+            body.Location = new Point(Form1.ActiveForm.Width / 2 - 100 - 20 * size, 399);
         }
         void lose()
         {
@@ -47,9 +50,10 @@ namespace Proj
             ySpeed = 0;
             L++;
             side = -1;
+            timer1.Interval = 40;
             ball.Location = new Point(Form1.ActiveForm.Width / 2 - 10, 300);
             opponent.Location = new Point(Form1.ActiveForm.Width / 2 - 100, 41);
-            body.Location = new Point(Form1.ActiveForm.Width / 2 - 100, 399);
+            body.Location = new Point(Form1.ActiveForm.Width / 2 - 100 - 20 * size, 399);
         }
         void opponentMove()
         {
@@ -70,6 +74,9 @@ namespace Proj
             speedSlow.Enabled = false; speedSlow.Hide();
             speedNormal.Enabled = false; speedNormal.Hide();
             speedFast.Enabled = false; speedFast.Hide();
+            sizeSmall.Enabled = false; sizeSmall.Hide();
+            sizeNormal.Enabled = false; sizeNormal.Hide();
+            sizeBig.Enabled = false; sizeBig.Hide();
         }
         void pauseButton()
         {
@@ -79,6 +86,9 @@ namespace Proj
             speedSlow.Enabled = true; speedSlow.Show();
             speedNormal.Enabled = true; speedNormal.Show();
             speedFast.Enabled = true; speedFast.Show();
+            sizeSmall.Enabled = true; sizeSmall.Show();
+            sizeNormal.Enabled = true; sizeNormal.Show();
+            sizeBig.Enabled = true; sizeBig.Show();
         }
         private void speedS(object sender, EventArgs e)
         {
@@ -91,6 +101,37 @@ namespace Proj
         private void speedF(object sender, EventArgs e)
         {
             speed = 1.2;
+        }
+        private void sizeS(object sender, EventArgs e)
+        {
+            body.Width = 160;
+            if (size != -1)
+            {
+                body.Left += 20;
+            }
+            size = -1;
+        }
+        private void sizeN(object sender, EventArgs e)
+        {
+            body.Width = 200;
+            if(size == -1)
+            {
+                body.Left -= 20;
+            }
+            if(size == 1)
+            {
+                body.Left += 20;
+            }
+            size = 0;
+        }
+        private void sizeB(object sender, EventArgs e)
+        {
+            body.Width = 240;
+            if (size != 1)
+            {
+                body.Left -= 20;
+            }
+            size = 1;
         }
         private void timer2_Tick(object sender, EventArgs e)
         {
@@ -120,7 +161,7 @@ namespace Proj
             if (ball.Bounds.IntersectsWith(body.Bounds))
             {
                 ySpeed = 1;
-                xSpeed = -2 * (ball.Location.X - body.Location.X - 100);
+                xSpeed = Convert.ToInt32(Math.Round( -2 * (ball.Location.X - body.Location.X - (90 + 20 * size)) * (1 - size * 0.2)));
                 if (timer1.Interval > 20 && ready)
                 {
                     timer1.Interval--;
@@ -155,7 +196,7 @@ namespace Proj
             {
                 body.Left -= 20 * gameActive;
             }
-            if (e.KeyCode == Keys.Right && body.Location.X <= Form1.ActiveForm.Size.Width-220)
+            if (e.KeyCode == Keys.Right && body.Location.X <= Form1.ActiveForm.Size.Width - 221 - 40 * size)
             {
                 body.Left += 20 * gameActive;
             }

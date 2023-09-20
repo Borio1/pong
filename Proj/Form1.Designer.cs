@@ -39,6 +39,10 @@
             this.speedNormal = new System.Windows.Forms.Button();
             this.speedFast = new System.Windows.Forms.Button();
             this.buttonStart = new System.Windows.Forms.Button();
+            this.sizeBig = new System.Windows.Forms.Button();
+            this.sizeNormal = new System.Windows.Forms.Button();
+            this.sizeSmall = new System.Windows.Forms.Button();
+            this.label1 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.body)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.ball)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.opponent)).BeginInit();
@@ -135,14 +139,60 @@
             // 
             this.buttonStart.CausesValidation = false;
             this.buttonStart.Font = new System.Drawing.Font("Microsoft Sans Serif", 30.25F);
-            this.buttonStart.Location = new System.Drawing.Point(281, 114);
+            this.buttonStart.Location = new System.Drawing.Point(275, 100);
             this.buttonStart.Name = "buttonStart";
-            this.buttonStart.Size = new System.Drawing.Size(233, 83);
+            this.buttonStart.Size = new System.Drawing.Size(240, 80);
             this.buttonStart.TabIndex = 1;
             this.buttonStart.TabStop = false;
             this.buttonStart.Text = "Start";
             this.buttonStart.UseVisualStyleBackColor = true;
             this.buttonStart.Click += new System.EventHandler(this.startButton);
+            // 
+            // sizeBig
+            // 
+            this.sizeBig.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.25F);
+            this.sizeBig.Location = new System.Drawing.Point(539, 326);
+            this.sizeBig.Name = "sizeBig";
+            this.sizeBig.Size = new System.Drawing.Size(233, 39);
+            this.sizeBig.TabIndex = 4;
+            this.sizeBig.TabStop = false;
+            this.sizeBig.Text = "Big";
+            this.sizeBig.UseVisualStyleBackColor = true;
+            this.sizeBig.Click += new System.EventHandler(this.sizeB);
+            // 
+            // sizeNormal
+            // 
+            this.sizeNormal.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.25F);
+            this.sizeNormal.Location = new System.Drawing.Point(539, 264);
+            this.sizeNormal.Name = "sizeNormal";
+            this.sizeNormal.Size = new System.Drawing.Size(233, 39);
+            this.sizeNormal.TabIndex = 5;
+            this.sizeNormal.TabStop = false;
+            this.sizeNormal.Text = "Normal";
+            this.sizeNormal.UseVisualStyleBackColor = true;
+            this.sizeNormal.Click += new System.EventHandler(this.sizeN);
+            // 
+            // sizeSmall
+            // 
+            this.sizeSmall.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.25F);
+            this.sizeSmall.Location = new System.Drawing.Point(539, 203);
+            this.sizeSmall.Name = "sizeSmall";
+            this.sizeSmall.Size = new System.Drawing.Size(233, 39);
+            this.sizeSmall.TabIndex = 6;
+            this.sizeSmall.TabStop = false;
+            this.sizeSmall.Text = "Small";
+            this.sizeSmall.UseVisualStyleBackColor = true;
+            this.sizeSmall.Click += new System.EventHandler(this.sizeS);
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.ForeColor = System.Drawing.Color.Lime;
+            this.label1.Location = new System.Drawing.Point(610, 9);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(162, 13);
+            this.label1.TabIndex = 7;
+            this.label1.Text = "Press \'Escape\' to open the menu";
             // 
             // Form1
             // 
@@ -150,6 +200,10 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.Black;
             this.ClientSize = new System.Drawing.Size(784, 461);
+            this.Controls.Add(this.label1);
+            this.Controls.Add(this.sizeSmall);
+            this.Controls.Add(this.sizeNormal);
+            this.Controls.Add(this.sizeBig);
             this.Controls.Add(this.buttonStart);
             this.Controls.Add(this.speedFast);
             this.Controls.Add(this.speedNormal);
@@ -181,6 +235,10 @@
         private System.Windows.Forms.Button speedNormal;
         private System.Windows.Forms.Button speedFast;
         private System.Windows.Forms.Button buttonStart;
+        private System.Windows.Forms.Button sizeBig;
+        private System.Windows.Forms.Button sizeNormal;
+        private System.Windows.Forms.Button sizeSmall;
+        private System.Windows.Forms.Label label1;
     }
 }
 
