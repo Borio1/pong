@@ -80,15 +80,19 @@ namespace Proj
         }
         void pauseButton()
         {
-            gameActive = 0;
+            if(!start)
+            {
+                gameActive = 0;
 
-            buttonStart.Enabled = true; buttonStart.Show();
-            speedSlow.Enabled = true; speedSlow.Show();
-            speedNormal.Enabled = true; speedNormal.Show();
-            speedFast.Enabled = true; speedFast.Show();
-            sizeSmall.Enabled = true; sizeSmall.Show();
-            sizeNormal.Enabled = true; sizeNormal.Show();
-            sizeBig.Enabled = true; sizeBig.Show();
+                buttonStart.Enabled = true; buttonStart.Show();
+                speedSlow.Enabled = true; speedSlow.Show();
+                speedNormal.Enabled = true; speedNormal.Show();
+                speedFast.Enabled = true; speedFast.Show();
+                sizeSmall.Enabled = true; sizeSmall.Show();
+                sizeNormal.Enabled = true; sizeNormal.Show();
+                sizeBig.Enabled = true; sizeBig.Show();
+            }
+            
         }
         private void speedS(object sender, EventArgs e)
         {
@@ -105,9 +109,13 @@ namespace Proj
         private void sizeS(object sender, EventArgs e)
         {
             body.Width = 160;
-            if (size != -1)
+            if (size == 0)
             {
                 body.Left += 20;
+            }
+            if (size == 1)
+            {
+                body.Left += 40;
             }
             size = -1;
         }
@@ -127,7 +135,11 @@ namespace Proj
         private void sizeB(object sender, EventArgs e)
         {
             body.Width = 240;
-            if (size != 1)
+            if (size == -1)
+            {
+                body.Left -= 40;
+            }
+            if (size == 0)
             {
                 body.Left -= 20;
             }
