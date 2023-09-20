@@ -35,6 +35,10 @@
             this.ball = new System.Windows.Forms.PictureBox();
             this.opponent = new System.Windows.Forms.PictureBox();
             this.score = new System.Windows.Forms.Label();
+            this.speedSlow = new System.Windows.Forms.Button();
+            this.speedNormal = new System.Windows.Forms.Button();
+            this.speedFast = new System.Windows.Forms.Button();
+            this.buttonStart = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.body)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.ball)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.opponent)).BeginInit();
@@ -49,7 +53,6 @@
             this.body.Size = new System.Drawing.Size(200, 21);
             this.body.TabIndex = 0;
             this.body.TabStop = false;
-            this.body.Click += new System.EventHandler(this.pictureBox1_Click);
             // 
             // timer1
             // 
@@ -92,18 +95,71 @@
             this.score.TabIndex = 3;
             this.score.Text = "Score: ";
             // 
+            // speedSlow
+            // 
+            this.speedSlow.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.25F);
+            this.speedSlow.Location = new System.Drawing.Point(15, 203);
+            this.speedSlow.Name = "speedSlow";
+            this.speedSlow.Size = new System.Drawing.Size(233, 39);
+            this.speedSlow.TabIndex = 1;
+            this.speedSlow.TabStop = false;
+            this.speedSlow.Text = "Slow";
+            this.speedSlow.UseVisualStyleBackColor = true;
+            this.speedSlow.Click += new System.EventHandler(this.speedS);
+            // 
+            // speedNormal
+            // 
+            this.speedNormal.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.25F);
+            this.speedNormal.Location = new System.Drawing.Point(15, 264);
+            this.speedNormal.Name = "speedNormal";
+            this.speedNormal.Size = new System.Drawing.Size(233, 39);
+            this.speedNormal.TabIndex = 1;
+            this.speedNormal.TabStop = false;
+            this.speedNormal.Text = "Normal";
+            this.speedNormal.UseVisualStyleBackColor = true;
+            this.speedNormal.Click += new System.EventHandler(this.speedN);
+            // 
+            // speedFast
+            // 
+            this.speedFast.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.25F);
+            this.speedFast.Location = new System.Drawing.Point(15, 326);
+            this.speedFast.Name = "speedFast";
+            this.speedFast.Size = new System.Drawing.Size(233, 39);
+            this.speedFast.TabIndex = 1;
+            this.speedFast.TabStop = false;
+            this.speedFast.Text = "Fast";
+            this.speedFast.UseVisualStyleBackColor = true;
+            this.speedFast.Click += new System.EventHandler(this.speedF);
+            // 
+            // buttonStart
+            // 
+            this.buttonStart.CausesValidation = false;
+            this.buttonStart.Font = new System.Drawing.Font("Microsoft Sans Serif", 30.25F);
+            this.buttonStart.Location = new System.Drawing.Point(281, 114);
+            this.buttonStart.Name = "buttonStart";
+            this.buttonStart.Size = new System.Drawing.Size(233, 83);
+            this.buttonStart.TabIndex = 1;
+            this.buttonStart.TabStop = false;
+            this.buttonStart.Text = "Start";
+            this.buttonStart.UseVisualStyleBackColor = true;
+            this.buttonStart.Click += new System.EventHandler(this.startButton);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.Black;
             this.ClientSize = new System.Drawing.Size(784, 461);
+            this.Controls.Add(this.buttonStart);
+            this.Controls.Add(this.speedFast);
+            this.Controls.Add(this.speedNormal);
+            this.Controls.Add(this.speedSlow);
             this.Controls.Add(this.score);
             this.Controls.Add(this.opponent);
             this.Controls.Add(this.ball);
             this.Controls.Add(this.body);
             this.Name = "Form1";
-            this.Text = " ";
+            this.Text = "v";
             this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.Form1_KeyDown);
             ((System.ComponentModel.ISupportInitialize)(this.body)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.ball)).EndInit();
@@ -121,6 +177,10 @@
         private System.Windows.Forms.PictureBox ball;
         private System.Windows.Forms.PictureBox opponent;
         private System.Windows.Forms.Label score;
+        private System.Windows.Forms.Button speedSlow;
+        private System.Windows.Forms.Button speedNormal;
+        private System.Windows.Forms.Button speedFast;
+        private System.Windows.Forms.Button buttonStart;
     }
 }
 

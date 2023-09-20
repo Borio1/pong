@@ -26,6 +26,8 @@ namespace Proj
         public Boolean start;
         public Boolean ready;
         public int side = -1;
+        public double speed = 1;
+        public int gameActive = 0;
 
         void win()
         {
@@ -53,16 +55,42 @@ namespace Proj
         {
             if (opponent.Location.X + 100 + rnd.Next(60) < ball.Location.X)
             {
-                opponent.Left += 7;
+                opponent.Left += Convert.ToInt32(Math.Round(7 * speed)) * gameActive;
             }
             if (opponent.Location.X + 100 + rnd.Next(60) > ball.Location.X && opponent.Location.X > 0)
             {
-                opponent.Left -= 7;
+                opponent.Left -= Convert.ToInt32(Math.Round(7 * speed)) * gameActive;
             }
         }
-        private void pictureBox1_Click(object sender, EventArgs e)
+        private void startButton(object sender, EventArgs e)
         {
+            gameActive = 1;
 
+            buttonStart.Enabled = false; buttonStart.Hide();
+            speedSlow.Enabled = false; speedSlow.Hide();
+            speedNormal.Enabled = false; speedNormal.Hide();
+            speedFast.Enabled = false; speedFast.Hide();
+        }
+        void pauseButton()
+        {
+            gameActive = 0;
+
+            buttonStart.Enabled = true; buttonStart.Show();
+            speedSlow.Enabled = true; speedSlow.Show();
+            speedNormal.Enabled = true; speedNormal.Show();
+            speedFast.Enabled = true; speedFast.Show();
+        }
+        private void speedS(object sender, EventArgs e)
+        {
+            speed = 0.8;
+        }
+        private void speedN(object sender, EventArgs e)
+        {
+            speed = 1;
+        }
+        private void speedF(object sender, EventArgs e)
+        {
+            speed = 1.2;
         }
         private void timer2_Tick(object sender, EventArgs e)
         {
@@ -117,19 +145,23 @@ namespace Proj
         void ballMove()
         {
             turn();
-            ball.Top -= ySpeed * 10;
-            ball.Left -= xSpeed / 20;
+            ball.Top -= Convert.ToInt32(Math.Round(ySpeed * 10 * speed)) * gameActive;
+            ball.Left -= Convert.ToInt32(Math.Round(xSpeed / 20 * speed)) * gameActive;
         }
 
         void Form1_KeyDown(object sender, KeyEventArgs e)
         {
             if (e.KeyCode == Keys.Left && body.Location.X >= 1)
             {
-                body.Left -= 20;
+                body.Left -= 20 * gameActive;
             }
             if (e.KeyCode == Keys.Right && body.Location.X <= Form1.ActiveForm.Size.Width-220)
             {
-                body.Left += 20;
+                body.Left += 20 * gameActive;
+            }
+            if(e.KeyCode == Keys.Escape)
+            {
+                pauseButton();
             }
             if (start == false && (e.KeyCode == Keys.Left || e.KeyCode == Keys.Right))
             {
@@ -140,11 +172,6 @@ namespace Proj
         private void ball_Click(object sender, EventArgs e)
         {
       
-        }
-
-        private void score_TextChanged(object sender, EventArgs e)
-        {
-
         }
     }
 }
