@@ -102,9 +102,9 @@
             // speedSlow
             // 
             this.speedSlow.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.25F);
-            this.speedSlow.Location = new System.Drawing.Point(15, 203);
+            this.speedSlow.Location = new System.Drawing.Point(12, 200);
             this.speedSlow.Name = "speedSlow";
-            this.speedSlow.Size = new System.Drawing.Size(233, 39);
+            this.speedSlow.Size = new System.Drawing.Size(240, 40);
             this.speedSlow.TabIndex = 1;
             this.speedSlow.TabStop = false;
             this.speedSlow.Text = "Slow";
@@ -114,9 +114,9 @@
             // speedNormal
             // 
             this.speedNormal.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.25F);
-            this.speedNormal.Location = new System.Drawing.Point(15, 264);
+            this.speedNormal.Location = new System.Drawing.Point(12, 260);
             this.speedNormal.Name = "speedNormal";
-            this.speedNormal.Size = new System.Drawing.Size(233, 39);
+            this.speedNormal.Size = new System.Drawing.Size(240, 40);
             this.speedNormal.TabIndex = 1;
             this.speedNormal.TabStop = false;
             this.speedNormal.Text = "Normal";
@@ -126,9 +126,9 @@
             // speedFast
             // 
             this.speedFast.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.25F);
-            this.speedFast.Location = new System.Drawing.Point(15, 326);
+            this.speedFast.Location = new System.Drawing.Point(12, 320);
             this.speedFast.Name = "speedFast";
-            this.speedFast.Size = new System.Drawing.Size(233, 39);
+            this.speedFast.Size = new System.Drawing.Size(240, 40);
             this.speedFast.TabIndex = 1;
             this.speedFast.TabStop = false;
             this.speedFast.Text = "Fast";
@@ -151,9 +151,9 @@
             // sizeBig
             // 
             this.sizeBig.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.25F);
-            this.sizeBig.Location = new System.Drawing.Point(539, 326);
+            this.sizeBig.Location = new System.Drawing.Point(532, 200);
             this.sizeBig.Name = "sizeBig";
-            this.sizeBig.Size = new System.Drawing.Size(233, 39);
+            this.sizeBig.Size = new System.Drawing.Size(240, 40);
             this.sizeBig.TabIndex = 4;
             this.sizeBig.TabStop = false;
             this.sizeBig.Text = "Big";
@@ -163,9 +163,9 @@
             // sizeNormal
             // 
             this.sizeNormal.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.25F);
-            this.sizeNormal.Location = new System.Drawing.Point(539, 264);
+            this.sizeNormal.Location = new System.Drawing.Point(532, 260);
             this.sizeNormal.Name = "sizeNormal";
-            this.sizeNormal.Size = new System.Drawing.Size(233, 39);
+            this.sizeNormal.Size = new System.Drawing.Size(240, 40);
             this.sizeNormal.TabIndex = 5;
             this.sizeNormal.TabStop = false;
             this.sizeNormal.Text = "Normal";
@@ -175,9 +175,9 @@
             // sizeSmall
             // 
             this.sizeSmall.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.25F);
-            this.sizeSmall.Location = new System.Drawing.Point(539, 203);
+            this.sizeSmall.Location = new System.Drawing.Point(532, 320);
             this.sizeSmall.Name = "sizeSmall";
-            this.sizeSmall.Size = new System.Drawing.Size(233, 39);
+            this.sizeSmall.Size = new System.Drawing.Size(240, 40);
             this.sizeSmall.TabIndex = 6;
             this.sizeSmall.TabStop = false;
             this.sizeSmall.Text = "Small";
