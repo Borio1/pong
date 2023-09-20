@@ -42,7 +42,7 @@
             this.sizeBig = new System.Windows.Forms.Button();
             this.sizeNormal = new System.Windows.Forms.Button();
             this.sizeSmall = new System.Windows.Forms.Button();
-            this.label1 = new System.Windows.Forms.Label();
+            this.label = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.body)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.ball)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.opponent)).BeginInit();
@@ -184,15 +184,16 @@
             this.sizeSmall.UseVisualStyleBackColor = true;
             this.sizeSmall.Click += new System.EventHandler(this.sizeS);
             // 
-            // label1
+            // label
             // 
-            this.label1.AutoSize = true;
-            this.label1.ForeColor = System.Drawing.Color.Lime;
-            this.label1.Location = new System.Drawing.Point(610, 9);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(162, 13);
-            this.label1.TabIndex = 7;
-            this.label1.Text = "Press \'Escape\' to open the menu";
+            this.label.AutoSize = true;
+            this.label.ForeColor = System.Drawing.Color.Lime;
+            this.label.Location = new System.Drawing.Point(610, 9);
+            this.label.Name = "label";
+            this.label.Size = new System.Drawing.Size(162, 13);
+            this.label.TabIndex = 7;
+            this.label.Text = "Press \'Escape\' to open the menu";
+            this.label.Visible = false;
             // 
             // Form1
             // 
@@ -200,7 +201,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.Black;
             this.ClientSize = new System.Drawing.Size(784, 461);
-            this.Controls.Add(this.label1);
+            this.Controls.Add(this.label);
             this.Controls.Add(this.sizeSmall);
             this.Controls.Add(this.sizeNormal);
             this.Controls.Add(this.sizeBig);
@@ -238,7 +239,7 @@
         private System.Windows.Forms.Button sizeBig;
         private System.Windows.Forms.Button sizeNormal;
         private System.Windows.Forms.Button sizeSmall;
-        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Label label;
     }
 }
 

@@ -33,7 +33,7 @@ namespace Proj
 
         void win()
         {
-            start = false;
+            start = false; label.Show();
             xSpeed = 0;
             ySpeed = 0;
             W++;
@@ -45,7 +45,7 @@ namespace Proj
         }
         void lose()
         {
-            start = false;
+            start = false; label.Show();
             xSpeed = 0;
             ySpeed = 0;
             L++;
@@ -69,6 +69,7 @@ namespace Proj
         private void startButton(object sender, EventArgs e)
         {
             gameActive = 1;
+            label.Show();
 
             buttonStart.Enabled = false; buttonStart.Hide();
             speedSlow.Enabled = false; speedSlow.Hide();
@@ -82,6 +83,7 @@ namespace Proj
         {
             if(!start)
             {
+                label.Hide();
                 gameActive = 0;
 
                 buttonStart.Enabled = true; buttonStart.Show();
@@ -218,7 +220,7 @@ namespace Proj
             }
             if (start == false && (e.KeyCode == Keys.Left || e.KeyCode == Keys.Right))
             {
-                start = true;
+                start = true; label.Hide();
                 ySpeed = side;
             }
         }
