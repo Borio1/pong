@@ -194,6 +194,7 @@
             this.label.TabIndex = 7;
             this.label.Text = "Press \'Escape\' to open the menu";
             this.label.Visible = false;
+            this.label.Click += new System.EventHandler(this.label_Click);
             // 
             // Form1
             // 
@@ -216,6 +217,7 @@
             this.Name = "Form1";
             this.Text = "v";
             this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.Form1_KeyDown);
+            this.Resize += new System.EventHandler(this.setup);
             ((System.ComponentModel.ISupportInitialize)(this.body)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.ball)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.opponent)).EndInit();
