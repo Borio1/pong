@@ -266,11 +266,11 @@ namespace Proj
         { 
             if(moveLeft)
             {
-                body.Left -= Convert.ToInt32(Math.Floor(5 * gameActive * widthMulti));
+                body.Left -= Convert.ToInt32(Math.Floor(5 * gameActive * (widthMulti / 2.0) + 0.5));
             }
             if(moveRight)
             {
-                body.Left += Convert.ToInt32(Math.Floor(5 * gameActive * widthMulti));
+                body.Left += Convert.ToInt32(Math.Floor(5 * gameActive * (widthMulti / 2.0) + 0.5));
             }
         }
 
