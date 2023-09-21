@@ -264,11 +264,11 @@ namespace Proj
 
         private void timer3_Tick(object sender, EventArgs e)
         { 
-            if(moveLeft)
+            if(moveLeft && body.Location.X >= 1)
             {
                 body.Left -= Convert.ToInt32(Math.Floor(5 * gameActive * (widthMulti / 2.0) + 0.5));
             }
-            if(moveRight)
+            if(moveRight && body.Location.X <= Form1.ActiveForm.Size.Width - 218)
             {
                 body.Left += Convert.ToInt32(Math.Floor(5 * gameActive * (widthMulti / 2.0) + 0.5));
             }
