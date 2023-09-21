@@ -9,6 +9,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Windows.Forms.VisualStyles;
+using System.Xml;
 
 namespace Proj
 {
@@ -53,7 +54,7 @@ namespace Proj
             L++;
             side = -1;
             timer1.Interval = 40;
-            ball.Location = new Point(Form1.ActiveForm.Width / 2 - 10, Form1.ActiveForm.Height - 209);
+            ball.Location = new Point(Form1.ActiveForm.Width / 2 - 10, Convert.ToInt32(Math.Round(body.Location.Y - 99 - 0 * (heightMulti - 1))));
             opponent.Location = new Point(Form1.ActiveForm.Width / 2 - 100, 41);
             body.Location = new Point(Form1.ActiveForm.Width / 2 - 100 - 20 * size, Form1.ActiveForm.Height - 110);
         }
@@ -61,11 +62,11 @@ namespace Proj
         {
             if (opponent.Location.X + 100 + rnd.Next(60) < ball.Location.X)
             {
-                opponent.Left += Convert.ToInt32(Math.Round(7 * speed * widthMulti)) * gameActive;
+                opponent.Left += Convert.ToInt32(Math.Round(7 * speed * (1.0 / (heightMulti / 6 + 0.8333)) * (widthMulti / 1.5 + 0.6667))) * gameActive;
             }
             if (opponent.Location.X + 100 + rnd.Next(60) > ball.Location.X && opponent.Location.X > 0)
             {
-                opponent.Left -= Convert.ToInt32(Math.Round(7 * speed * widthMulti)) * gameActive;
+                opponent.Left -= Convert.ToInt32(Math.Round(7 * speed * (1.0 / (heightMulti / 6 + 0.8333)) * (widthMulti / 1.5 + 0.6667))) * gameActive;
             }
         }
         private void startButton(object sender, EventArgs e)
@@ -203,18 +204,18 @@ namespace Proj
         {
             turn();
             ball.Top -= Convert.ToInt32(Math.Round(ySpeed * 10 * speed * heightMulti)) * gameActive;
-            ball.Left -= Convert.ToInt32(Math.Round(xSpeed / 20 * speed * widthMulti)) * gameActive;
+            ball.Left -= Convert.ToInt32(Math.Round(xSpeed / 17 * speed * (widthMulti / 3.0 + 0.6667))) * gameActive;
         }
 
         void Form1_KeyDown(object sender, KeyEventArgs e)
         {
             if (e.KeyCode == Keys.Left && body.Location.X >= 1)
             {
-                body.Left -= 20 * gameActive;
+                body.Left -= Convert.ToInt32(Math.Floor(20 * gameActive * widthMulti));
             }
             if (e.KeyCode == Keys.Right && body.Location.X <= Form1.ActiveForm.Size.Width - 221 - 40 * size)
             {
-                body.Left += 20 * gameActive;
+                body.Left += Convert.ToInt32(Math.Floor(20 * gameActive * widthMulti));
             }
             if(e.KeyCode == Keys.Escape)
             {
@@ -244,7 +245,7 @@ namespace Proj
             }
             widthMulti = Form1.ActiveForm.Width / 800.0;
             heightMulti = Form1.ActiveForm.Height / 500.0;
-            ball.Location = new Point(Form1.ActiveForm.Width / 2 - 10, Form1.ActiveForm.Height - 209);
+            ball.Location = new Point(Form1.ActiveForm.Width / 2 - 10, Convert.ToInt32(Math.Round(body.Location.Y - 50.5 - 48.5 * (heightMulti - 1))));
             label.Location = new Point(Form1.ActiveForm.Width - 190, 9);
             opponent.Location = new Point(Form1.ActiveForm.Width / 2 - 100, 41);
             body.Location = new Point(Form1.ActiveForm.Width / 2 - 100 - 20 * size, Form1.ActiveForm.Height - 110);

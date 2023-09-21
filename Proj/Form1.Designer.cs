@@ -139,7 +139,7 @@
             // 
             this.buttonStart.CausesValidation = false;
             this.buttonStart.Font = new System.Drawing.Font("Microsoft Sans Serif", 30.25F);
-            this.buttonStart.Location = new System.Drawing.Point(275, 100);
+            this.buttonStart.Location = new System.Drawing.Point(280, 140);
             this.buttonStart.Name = "buttonStart";
             this.buttonStart.Size = new System.Drawing.Size(240, 80);
             this.buttonStart.TabIndex = 1;
@@ -214,6 +214,7 @@
             this.Controls.Add(this.opponent);
             this.Controls.Add(this.ball);
             this.Controls.Add(this.body);
+            this.MinimumSize = new System.Drawing.Size(800, 500);
             this.Name = "Form1";
             this.Text = "v";
             this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.Form1_KeyDown);
