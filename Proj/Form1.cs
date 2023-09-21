@@ -5,6 +5,7 @@ using System.Data;
 using System.Drawing;
 using System.Linq;
 using System.Reflection.Emit;
+using System.Security.Cryptography.X509Certificates;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -33,6 +34,8 @@ namespace Proj
         public int size = 0;
         public double widthMulti = 1;
         public double heightMulti = 1;
+        public Boolean moveLeft;
+        public Boolean moveRight;
 
         void win()
         {
@@ -207,15 +210,15 @@ namespace Proj
             ball.Left -= Convert.ToInt32(Math.Round(xSpeed / 17 * speed * (widthMulti / 3.0 + 0.6667))) * gameActive;
         }
 
-        void Form1_KeyDown(object sender, KeyEventArgs e)
+        public void Form1_KeyDown(object sender, KeyEventArgs e)
         {
             if (e.KeyCode == Keys.Left && body.Location.X >= 1)
             {
-                body.Left -= Convert.ToInt32(Math.Floor(20 * gameActive * widthMulti));
+                moveLeft = true;
             }
             if (e.KeyCode == Keys.Right && body.Location.X <= Form1.ActiveForm.Size.Width - 221 - 40 * size)
             {
-                body.Left += Convert.ToInt32(Math.Floor(20 * gameActive * widthMulti));
+                moveRight = true;
             }
             if(e.KeyCode == Keys.Escape)
             {
@@ -226,6 +229,7 @@ namespace Proj
                 start = true; label.Hide();
                 ySpeed = side;
             }
+            
         }
         private void ball_Click(object sender, EventArgs e)
         {
@@ -256,6 +260,30 @@ namespace Proj
             sizeSmall.Location = new Point(buttonStart.Left + 257, buttonStart.Top + 220);
             sizeNormal.Location = new Point(buttonStart.Left + 257, buttonStart.Top + 160);
             sizeBig.Location = new Point(buttonStart.Left + 257, buttonStart.Top + 100);
+        }
+
+        private void timer3_Tick(object sender, EventArgs e)
+        { 
+            if(moveLeft)
+            {
+                body.Left -= Convert.ToInt32(Math.Floor(5 * gameActive * widthMulti));
+            }
+            if(moveRight)
+            {
+                body.Left += Convert.ToInt32(Math.Floor(5 * gameActive * widthMulti));
+            }
+        }
+
+        private void Form1_KeyUp(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Left)
+            {
+                moveLeft = false;
+            }
+            if (e.KeyCode == Keys.Right)
+            {
+                moveRight = false;
+            }
         }
     }
 }

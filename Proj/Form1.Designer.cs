@@ -43,6 +43,7 @@
             this.sizeNormal = new System.Windows.Forms.Button();
             this.sizeSmall = new System.Windows.Forms.Button();
             this.label = new System.Windows.Forms.Label();
+            this.timer3 = new System.Windows.Forms.Timer(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.body)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.ball)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.opponent)).BeginInit();
@@ -196,6 +197,12 @@
             this.label.Visible = false;
             this.label.Click += new System.EventHandler(this.label_Click);
             // 
+            // timer3
+            // 
+            this.timer3.Enabled = true;
+            this.timer3.Interval = 1;
+            this.timer3.Tick += new System.EventHandler(this.timer3_Tick);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -218,6 +225,7 @@
             this.Name = "Form1";
             this.Text = "v";
             this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.Form1_KeyDown);
+            this.KeyUp += new System.Windows.Forms.KeyEventHandler(this.Form1_KeyUp);
             this.Resize += new System.EventHandler(this.setup);
             ((System.ComponentModel.ISupportInitialize)(this.body)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.ball)).EndInit();
@@ -243,6 +251,7 @@
         private System.Windows.Forms.Button sizeNormal;
         private System.Windows.Forms.Button sizeSmall;
         private System.Windows.Forms.Label label;
+        private System.Windows.Forms.Timer timer3;
     }
 }
 
