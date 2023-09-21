@@ -60,11 +60,11 @@ namespace Proj
         }
         void opponentMove()
         {
-            if (opponent.Location.X + 100 + rnd.Next(60) < ball.Location.X)
+            if (opponent.Location.X + 100 + rnd.Next(60) < ball.Location.X && (ball.Location.X > opponent.Location.X + 130 || xSpeed > 0))
             {
                 opponent.Left += Convert.ToInt32(Math.Round(7 * speed * (1.0 / (heightMulti / 6 + 0.8333)) * (widthMulti / 1.5 + 0.6667))) * gameActive;
             }
-            if (opponent.Location.X + 100 + rnd.Next(60) > ball.Location.X && opponent.Location.X > 0)
+            if (opponent.Location.X + 100 + rnd.Next(60) > ball.Location.X && (ball.Location.X < opponent.Location.X + 70  || xSpeed > 0) && opponent.Location.X > 0)
             {
                 opponent.Left -= Convert.ToInt32(Math.Round(7 * speed * (1.0 / (heightMulti / 6 + 0.8333)) * (widthMulti / 1.5 + 0.6667))) * gameActive;
             }
