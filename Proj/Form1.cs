@@ -30,7 +30,8 @@ namespace Proj
         public double speed = 1;
         public int gameActive = 0;
         public int size = 0;
-        public int fullScreen = 1;
+        public double widthMulti = 1;
+        public double heightMulti = 1;
 
         void win()
         {
@@ -60,25 +61,11 @@ namespace Proj
         {
             if (opponent.Location.X + 100 + rnd.Next(60) < ball.Location.X)
             {
-                if(fullScreen == 1)
-                {
-                    opponent.Left += Convert.ToInt32(Math.Round(7 * speed)) * gameActive;
-                }
-                else
-                {
-                    opponent.Left += Convert.ToInt32(Math.Round(8 * speed)) * gameActive;
-                }
+                opponent.Left += Convert.ToInt32(Math.Round(7 * speed * widthMulti)) * gameActive;
             }
             if (opponent.Location.X + 100 + rnd.Next(60) > ball.Location.X && opponent.Location.X > 0)
             {
-                if (fullScreen == 1)
-                {
-                    opponent.Left -= Convert.ToInt32(Math.Round(7 * speed)) * gameActive;
-                }
-                else
-                {
-                    opponent.Left -= Convert.ToInt32(Math.Round(8 * speed)) * gameActive;
-                }
+                opponent.Left -= Convert.ToInt32(Math.Round(7 * speed * widthMulti)) * gameActive;
             }
         }
         private void startButton(object sender, EventArgs e)
@@ -215,8 +202,8 @@ namespace Proj
         void ballMove()
         {
             turn();
-            ball.Top -= Convert.ToInt32(Math.Round(ySpeed * 10 * speed)) * gameActive * fullScreen;
-            ball.Left -= Convert.ToInt32(Math.Round(xSpeed / 20 * speed)) * gameActive;
+            ball.Top -= Convert.ToInt32(Math.Round(ySpeed * 10 * speed * heightMulti)) * gameActive;
+            ball.Left -= Convert.ToInt32(Math.Round(xSpeed / 20 * speed * widthMulti)) * gameActive;
         }
 
         void Form1_KeyDown(object sender, KeyEventArgs e)
@@ -255,22 +242,16 @@ namespace Proj
             {
                 start = false; pauseButton(); L++; startButton(sender, e);
             }
-            if (fullScreen == 1)
-            {
-                fullScreen = 2;
-            }
-            else
-            {
-                fullScreen = 1;
-            }
+            widthMulti = Form1.ActiveForm.Width / 800.0;
+            heightMulti = Form1.ActiveForm.Height / 500.0;
             ball.Location = new Point(Form1.ActiveForm.Width / 2 - 10, Form1.ActiveForm.Height - 209);
             label.Location = new Point(Form1.ActiveForm.Width - 190, 9);
             opponent.Location = new Point(Form1.ActiveForm.Width / 2 - 100, 41);
             body.Location = new Point(Form1.ActiveForm.Width / 2 - 100 - 20 * size, Form1.ActiveForm.Height - 110);
             buttonStart.Location = new Point(Form1.ActiveForm.Width / 2 - 120, Form1.ActiveForm.Height / 5 + 40);
-            speedSlow.Location = new Point(buttonStart.Left - 263, buttonStart.Top + 100);
-            speedNormal.Location = new Point(buttonStart.Left - 263, buttonStart.Top + 160);
-            speedFast.Location = new Point(buttonStart.Left - 263, buttonStart.Top + 220);
+            speedSlow.Location = new Point(buttonStart.Left - 265, buttonStart.Top + 100);
+            speedNormal.Location = new Point(buttonStart.Left - 265, buttonStart.Top + 160);
+            speedFast.Location = new Point(buttonStart.Left - 265, buttonStart.Top + 220);
             sizeSmall.Location = new Point(buttonStart.Left + 257, buttonStart.Top + 220);
             sizeNormal.Location = new Point(buttonStart.Left + 257, buttonStart.Top + 160);
             sizeBig.Location = new Point(buttonStart.Left + 257, buttonStart.Top + 100);

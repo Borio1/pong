@@ -102,7 +102,7 @@
             // speedSlow
             // 
             this.speedSlow.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.25F);
-            this.speedSlow.Location = new System.Drawing.Point(12, 200);
+            this.speedSlow.Location = new System.Drawing.Point(10, 200);
             this.speedSlow.Name = "speedSlow";
             this.speedSlow.Size = new System.Drawing.Size(240, 40);
             this.speedSlow.TabIndex = 1;
@@ -114,7 +114,7 @@
             // speedNormal
             // 
             this.speedNormal.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.25F);
-            this.speedNormal.Location = new System.Drawing.Point(12, 260);
+            this.speedNormal.Location = new System.Drawing.Point(10, 260);
             this.speedNormal.Name = "speedNormal";
             this.speedNormal.Size = new System.Drawing.Size(240, 40);
             this.speedNormal.TabIndex = 1;
@@ -126,7 +126,7 @@
             // speedFast
             // 
             this.speedFast.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.25F);
-            this.speedFast.Location = new System.Drawing.Point(12, 320);
+            this.speedFast.Location = new System.Drawing.Point(10, 320);
             this.speedFast.Name = "speedFast";
             this.speedFast.Size = new System.Drawing.Size(240, 40);
             this.speedFast.TabIndex = 1;
