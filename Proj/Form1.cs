@@ -20,7 +20,7 @@ namespace Proj
         {
             InitializeComponent();
         }
-        Random rnd = new Random();
+        public Random rnd = new Random();
 
         public int ySpeed = -1;
         public int xSpeed = 0;
@@ -40,7 +40,7 @@ namespace Proj
         void win()
         {
             start = false; label.Show();
-            xSpeed = 0;
+            xSpeed = rnd.Next(-100, 100);
             ySpeed = 0;
             W++;
             side = 1;
