@@ -36,7 +36,7 @@ namespace Proj
         public double heightMulti = 1;
         public Boolean moveLeft;
         public Boolean moveRight;
-
+        public Boolean ballOwned = true;
         void win()
         {
             start = false; label.Show();
@@ -45,8 +45,9 @@ namespace Proj
             W++;
             side = 1;
             timer1.Interval = 40;
+            ballOwned = false;
             ball.Location = new Point(Form1.ActiveForm.Width / 2 - 10, 140);
-            opponent.Location = new Point(Form1.ActiveForm.Width/2-100, 41);
+            opponent.Location = new Point(Form1.ActiveForm.Width/2 - 100, 41);
             body.Location = new Point(Form1.ActiveForm.Width / 2 - 100 - 20 * size, Form1.ActiveForm.Height - 110);
         }
         void lose()
@@ -57,6 +58,7 @@ namespace Proj
             L++;
             side = -1;
             timer1.Interval = 40;
+            ballOwned = true;
             ball.Location = new Point(Form1.ActiveForm.Width / 2 - 10, Convert.ToInt32(Math.Round(body.Location.Y - 99 - 0 * (heightMulti - 1))));
             opponent.Location = new Point(Form1.ActiveForm.Width / 2 - 100, 41);
             body.Location = new Point(Form1.ActiveForm.Width / 2 - 100 - 20 * size, Form1.ActiveForm.Height - 110);
@@ -65,11 +67,11 @@ namespace Proj
         {
             if (opponent.Location.X + 100 + rnd.Next(60) < ball.Location.X && (ball.Location.X > opponent.Location.X + 130 || xSpeed > 0))
             {
-                opponent.Left += Convert.ToInt32(Math.Round(7 * speed * (1.0 / (heightMulti / 6 + 0.8333)) * (widthMulti / 1.5 + 0.6667))) * gameActive;
+                opponent.Left += Convert.ToInt32(Math.Round(7 * speed * (1.0 / (heightMulti / 8.0 + 0.875)) * (widthMulti / 1.5 + 0.6667))) * gameActive;
             }
             if (opponent.Location.X + 100 + rnd.Next(60) > ball.Location.X && (ball.Location.X < opponent.Location.X + 70  || xSpeed > 0) && opponent.Location.X > 0)
             {
-                opponent.Left -= Convert.ToInt32(Math.Round(7 * speed * (1.0 / (heightMulti / 6 + 0.8333)) * (widthMulti / 1.5 + 0.6667))) * gameActive;
+                opponent.Left -= Convert.ToInt32(Math.Round(7 * speed * (1.0 / (heightMulti / 8.0 + 0.875)) * (widthMulti / 1.5 + 0.6667))) * gameActive;
             }
         }
         private void startButton(object sender, EventArgs e)
@@ -231,28 +233,26 @@ namespace Proj
             }
             
         }
-        private void ball_Click(object sender, EventArgs e)
-        {
-      
-        }
-
-        private void label_Click(object sender, EventArgs e)
-        {
-
-        }
-
         private void setup(object sender, EventArgs e)
         {
             if (start)
             {
                 start = false; pauseButton(); L++; startButton(sender, e);
             }
+
             widthMulti = Form1.ActiveForm.Width / 800.0;
             heightMulti = Form1.ActiveForm.Height / 500.0;
-            ball.Location = new Point(Form1.ActiveForm.Width / 2 - 10, Convert.ToInt32(Math.Round(body.Location.Y - 50.5 - 48.5 * (heightMulti - 1))));
+            if(ballOwned)
+            {
+                ball.Location = new Point(Form1.ActiveForm.Width / 2 - 10, body.Location.Y - 99);
+            }
+            else
+            {
+                ball.Location = new Point(Form1.ActiveForm.Width / 2 - 10, opponent.Location.Y + 119);
+            }
             label.Location = new Point(Form1.ActiveForm.Width - 190, 9);
             opponent.Location = new Point(Form1.ActiveForm.Width / 2 - 100, 41);
-            body.Location = new Point(Form1.ActiveForm.Width / 2 - 100 - 20 * size, Form1.ActiveForm.Height - 110);
+            body.Location = new Point(Form1.ActiveForm.Width / 2 - 100 - 20 * size, Form1.ActiveForm.Height - 101);
             buttonStart.Location = new Point(Form1.ActiveForm.Width / 2 - 120, Form1.ActiveForm.Height / 5 + 40);
             speedSlow.Location = new Point(buttonStart.Left - 265, buttonStart.Top + 100);
             speedNormal.Location = new Point(buttonStart.Left - 265, buttonStart.Top + 160);

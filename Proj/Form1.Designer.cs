@@ -79,12 +79,11 @@
             this.ball.Size = new System.Drawing.Size(20, 20);
             this.ball.TabIndex = 1;
             this.ball.TabStop = false;
-            this.ball.Click += new System.EventHandler(this.ball_Click);
             // 
             // opponent
             // 
             this.opponent.BackColor = System.Drawing.Color.White;
-            this.opponent.Location = new System.Drawing.Point(300, 41);
+            this.opponent.Location = new System.Drawing.Point(300, 40);
             this.opponent.Name = "opponent";
             this.opponent.Size = new System.Drawing.Size(200, 21);
             this.opponent.TabIndex = 2;
@@ -195,7 +194,6 @@
             this.label.TabIndex = 7;
             this.label.Text = "Press \'Escape\' to open the menu";
             this.label.Visible = false;
-            this.label.Click += new System.EventHandler(this.label_Click);
             // 
             // timer3
             // 
