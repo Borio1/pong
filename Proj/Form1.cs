@@ -192,7 +192,7 @@ namespace Proj
             if (ball.Bounds.IntersectsWith(opponent.Bounds))
             {
                 ySpeed = -1;
-                xSpeed = -2 * (ball.Location.X - opponent.Location.X - 100);
+                xSpeed = -2 * (ball.Location.X - opponent.Location.X - 90);
             }
             if (ball.Location.X <= 0)
             {
