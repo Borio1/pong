@@ -175,7 +175,6 @@ namespace Proj
                     lose();
                 }
             }
-            
         }
 
         void turn()
@@ -268,7 +267,7 @@ namespace Proj
             {
                 body.Left -= Convert.ToInt32(Math.Floor(5 * gameActive * (widthMulti / 2.0) + 0.5));
             }
-            if(moveRight && body.Location.X <= Form1.ActiveForm.Size.Width - 218)
+            if(moveRight && body.Location.X <= Form1.ActiveForm.Size.Width - 218 - 40 * size)
             {
                 body.Left += Convert.ToInt32(Math.Floor(5 * gameActive * (widthMulti / 2.0) + 0.5));
             }
